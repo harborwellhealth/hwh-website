@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Meet the people and experience behind HarborWell Health's interdisciplinary, longitudinal model of care.">
+  <title>People | HarborWell Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #023c5c;
+      --navy-deep: #012f49;
+      --teal: #73b8bf;
+      --brick: #a9474b;
+      --ink: #173b4d;
+      --slate: #566d78;
+      --ivory: #f3f0e9;
+      --white: #fff;
+      --line: rgba(2, 60, 92, 0.16);
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "Source Sans 3", Arial, sans-serif;
+      --max: 118rem;
+      --gutter: clamp(1.35rem, 4vw, 4.5rem);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    p { margin: 0; }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    h1 { max-width: 12ch; font-size: clamp(3.3rem, 6vw, 6.5rem); }
+    h2 { font-size: clamp(2rem, 3.3vw, 3.6rem); }
+
+    .container {
+      width: min(100%, var(--max));
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 0.5rem;
+      left: 0.5rem;
+      z-index: 100;
+      padding: 0.65rem 0.9rem;
+      color: var(--white);
+      background: var(--navy);
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      color: var(--white);
+      border-bottom: 1px solid transparent;
+      background: transparent;
+      transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .site-header.is-scrolled {
+      border-color: rgba(255,255,255,0.11);
+      background: rgba(1, 47, 73, 0.96);
+      box-shadow: 0 8px 28px rgba(1, 35, 54, 0.16);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .site-header .container {
+      width: min(100%, 1180px);
+      padding-inline: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 96px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: min-height 220ms ease;
+    }
+
+    .site-header.is-scrolled .nav { min-height: 72px; }
+
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand img { width: 218px; height: auto; transition: width 220ms ease; }
+    .site-header.is-scrolled .brand img { width: 176px; }
+
+    .nav-links {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      gap: clamp(1.25rem, 2.8vw, 2.4rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding-block: 0.35rem;
+      border-bottom: 1px solid transparent;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.94rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 160ms ease, border-color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a[aria-current="page"] {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.65);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      color: var(--white);
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      display: block;
+      width: 18px;
+      height: 1px;
+      margin: 4px auto;
+      background: currentColor;
+      content: "";
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span { opacity: 0; }
+    .menu-toggle[aria-expanded="true"]::before { transform: translateY(5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"]::after { transform: translateY(-5px) rotate(-45deg); }
+
+    .people-page {
+      padding-block: clamp(10rem, 16vw, 15rem) clamp(5rem, 9vw, 9rem);
+      background: var(--white);
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 1.25rem;
+      color: var(--brick);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.17em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .people__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: start;
+    }
+
+    .people__copy p {
+      max-width: 39rem;
+      margin-top: 2rem;
+      color: var(--slate);
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    }
+
+    .experience {
+      display: grid;
+      border-top: 1px solid var(--line);
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .experience span {
+      padding: 1.35rem 0.5rem 1.35rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--navy);
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+    }
+
+    .experience span:nth-child(even) {
+      padding-left: 1.4rem;
+      border-left: 1px solid var(--line);
+    }
+
+    .culture-note {
+      display: grid;
+      margin-top: clamp(4rem, 8vw, 8rem);
+      padding: clamp(2rem, 5vw, 4.5rem);
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
+      background: var(--ivory);
+    }
+
+    .culture-note p { color: var(--slate); font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
+
+    .site-footer {
+      padding-block: 4rem 2rem;
+      color: rgba(255,255,255,0.72);
+      background: var(--navy-deep);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr 0.8fr;
+      gap: 3rem;
+    }
+
+    .footer__brand img { width: 190px; }
+    .footer__brand p { max-width: 25rem; margin-top: 1.3rem; font-size: 0.93rem; }
+    .footer__heading { margin-bottom: 1rem; color: var(--teal); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+    .footer__links { margin: 0; padding: 0; list-style: none; }
+    .footer__links li { margin-bottom: 0.45rem; }
+    .footer__links a { color: rgba(255,255,255,0.76); font-size: 0.91rem; text-decoration: none; }
+    .footer__links a:hover, .footer__links a:focus-visible { color: var(--white); text-decoration: underline; }
+    .footer__address { margin: 0; font-style: normal; font-size: 0.91rem; }
+
+    .footer__bottom {
+      display: flex;
+      margin-top: 3.5rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255,255,255,0.52);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav { min-height: 82px; }
+      .brand img { width: 180px; }
+      .site-header.is-scrolled .nav { min-height: 66px; }
+      .site-header.is-scrolled .brand img { width: 158px; }
+      .menu-toggle { display: block; position: relative; z-index: 30; }
+      .nav-links { position: fixed; inset: 0; z-index: 25; display: none; padding: 7rem var(--gutter) 3rem; align-items: flex-start; flex-direction: column; gap: 0; background: var(--navy-deep); }
+      .nav-links.is-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding-block: 1rem; border-bottom: 1px solid rgba(255,255,255,0.14); font-family: var(--serif); font-size: 1.8rem; }
+      .people__grid, .culture-note, .footer__grid { grid-template-columns: 1fr; }
+      .footer__brand { grid-column: auto; }
+    }
+
+    @media (max-width: 620px) {
+      .experience { grid-template-columns: 1fr; }
+      .experience span:nth-child(even) { padding-left: 0; border-left: 0; }
+      .footer__bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header is-scrolled">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="HarborWell Health home">
+        <img src="https://static.wixstatic.com/media/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png/v1/fill/w_302,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png" alt="HarborWell Health">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span></button>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links" id="primary-navigation">
+          <li><a href="index.html#who-we-serve">Who we serve</a></li>
+          <li><a href="index.html#clinical-model">Clinical model</a></li>
+          <li><a href="index.html#technology">Technology</a></li>
+          <li><a href="index.html#care-story">Care Story</a></li>
+          <li><a href="people.html" aria-current="page">People</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="people-page" aria-labelledby="people-title">
+      <div class="container">
+        <div class="people__grid">
+          <div class="people__copy">
+            <span class="eyebrow">The people behind the model</span>
+            <h1 id="people-title">Built by people who know this work.</h1>
+            <p>HarborWell brings together experience that is rarely assembled in one organization. Clinical leaders, government-program experts, health plan operators, technologists, and company builders work together around a shared responsibility to the member.</p>
+          </div>
+          <div class="experience" aria-label="Areas of HarborWell team experience">
+            <span>Clinical care</span>
+            <span>Medicaid</span>
+            <span>Medicare</span>
+            <span>LTSS and HCBS</span>
+            <span>Health plans</span>
+            <span>Value-based risk</span>
+            <span>Technology</span>
+            <span>Operations</span>
+          </div>
+        </div>
+        <div class="culture-note">
+          <h2>Here, the people doing the work help shape how the work is done.</h2>
+          <p>HarborWell is designed to respond when clinicians and operators see a better way. Ideas can become improved workflows, protocols, and tools. The standard is not novelty for its own sake; it is whether the change helps the team understand more, act sooner, and deliver better care.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="https://static.wixstatic.com/media/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png/v1/fill/w_302,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png" alt="HarborWell Health">
+          <p>Physician-led, longitudinal clinical care for people with complex needs living at home.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Explore</div>
+          <ul class="footer__links">
+            <li><a href="index.html#who-we-serve">Who we serve</a></li>
+            <li><a href="index.html#clinical-model">Clinical model</a></li>
+            <li><a href="index.html#technology">Technology</a></li>
+            <li><a href="index.html#care-story">Care Story</a></li>
+            <li><a href="people.html">People</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Contact</div>
+          <address class="footer__address">
+            3810 Bedford Avenue, Suite 200<br>
+            Nashville, Tennessee 37215<br><br>
+            <a href="mailto:support@harborwellhealth.org">support@harborwellhealth.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 HarborWell Health</span>
+        <span>
+          <a href="privacy-policy.html">Privacy Policy</a> ·
+          <a href="terms-of-service.html">Terms of Service</a> ·
+          <a href="notice-of-privacy-practices.html">Notice of Privacy Practices</a> ·
+          <a href="sms-program.html">SMS / Texting Program</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+
+    function closeMenu() {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      menu.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
+    }
+
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open navigation' : 'Close navigation');
+      menu.classList.toggle('is-open', !open);
+      document.body.classList.toggle('menu-open', !open);
+    });
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
+  </script>
+</body>
+</html>

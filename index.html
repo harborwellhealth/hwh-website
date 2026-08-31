@@ -1,0 +1,1526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HarborWell Health brings physician-led, longitudinal clinical care together around people with complex needs living at home.">
+  <title>HarborWell Health | Clinical care centered on the person</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #023c5c;
+      --navy-deep: #012f49;
+      --navy-soft: #0d4e6d;
+      --ivory: #f1ede3;
+      --ivory-light: #f8f6f0;
+      --teal: #73b8bf;
+      --teal-light: #dbecee;
+      --coral: #ea526f;
+      --brick: #9d4348;
+      --mist: #b5c1c1;
+      --ink: #18313e;
+      --slate: #4f626a;
+      --line: rgba(2, 60, 92, 0.16);
+      --white: #fff;
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "Source Sans 3", Arial, sans-serif;
+      --max: 1180px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --section: clamp(5rem, 10vw, 9rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    section[id], footer[id] { scroll-margin-top: 88px; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--ivory-light);
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; }
+
+    p { margin: 0 0 1.25rem; }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.03;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    h1 { font-size: clamp(3rem, 5.4vw, 5.5rem); }
+    h2 { font-size: clamp(2.45rem, 5vw, 4.8rem); }
+    h3 { font-size: clamp(1.55rem, 2.2vw, 2.15rem); line-height: 1.12; }
+
+    .container {
+      width: min(100%, var(--max));
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .section { padding-block: var(--section); }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 1.1rem;
+      color: var(--brick);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.17em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .section-intro {
+      max-width: none;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    .section-intro p {
+      max-width: none;
+      margin-top: 1.6rem;
+      color: var(--slate);
+      font-size: clamp(1.08rem, 1.6vw, 1.25rem);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 0.5rem;
+      left: 0.5rem;
+      z-index: 1000;
+      padding: 0.65rem 0.9rem;
+      color: var(--white);
+      background: var(--navy);
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      color: var(--white);
+      border-bottom: 1px solid transparent;
+      background: transparent;
+      transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .site-header.is-scrolled {
+      border-color: rgba(255,255,255,0.11);
+      background: rgba(1, 47, 73, 0.96);
+      box-shadow: 0 8px 28px rgba(1, 35, 54, 0.16);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 96px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: min-height 220ms ease;
+    }
+
+    .site-header.is-scrolled .nav { min-height: 72px; }
+
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand img { width: 218px; height: auto; transition: width 220ms ease; }
+    .site-header.is-scrolled .brand img { width: 176px; }
+
+    .nav-links {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      gap: clamp(1.25rem, 2.8vw, 2.4rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding-block: 0.35rem;
+      border-bottom: 1px solid transparent;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.94rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 160ms ease, border-color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.65);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      color: var(--white);
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      display: block;
+      width: 18px;
+      height: 1px;
+      margin: 4px auto;
+      background: currentColor;
+      content: "";
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span { opacity: 0; }
+    .menu-toggle[aria-expanded="true"]::before { transform: translateY(5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"]::after { transform: translateY(-5px) rotate(-45deg); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(960px, 100svh);
+      overflow: hidden;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(1,47,73,0.97) 0%, rgba(1,47,73,0.89) 43%, rgba(1,47,73,0.18) 72%, rgba(1,47,73,0.12) 100%),
+        linear-gradient(0deg, rgba(1,47,73,0.45), transparent 45%);
+      content: "";
+    }
+
+    .hero__image {
+      position: absolute;
+      inset: 0 0 0 46%;
+      width: 54%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      min-height: min(960px, 100svh);
+      padding-top: 148px;
+      padding-bottom: 88px;
+      align-items: flex-end;
+    }
+
+    .hero__copy { width: min(760px, 65%); }
+
+    .hero .eyebrow { color: var(--teal); }
+
+    .hero h1 {
+      max-width: 10ch;
+      color: var(--white);
+    }
+
+    .hero__lead {
+      max-width: 43rem;
+      margin-top: 1.9rem;
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.83);
+      font-size: clamp(1.1rem, 1.65vw, 1.32rem);
+      line-height: 1.55;
+    }
+
+    .hero__principles {
+      display: flex;
+      margin-top: 2.4rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid rgba(255,255,255,0.24);
+      flex-wrap: wrap;
+      gap: 0.55rem 1.8rem;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* Thesis */
+    .thesis {
+      padding-block: clamp(2.8rem, 5vw, 4.4rem);
+      color: var(--navy);
+      background: var(--teal);
+    }
+
+    .thesis__grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 0.65fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .thesis__statement {
+      max-width: 28rem;
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .thesis__item {
+      padding-left: 1.25rem;
+      border-left: 1px solid rgba(2,60,92,0.28);
+    }
+
+    .thesis__item strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .thesis__item span { display: block; font-size: 0.9rem; line-height: 1.45; }
+
+    /* Who we serve */
+    .serve { background: var(--ivory-light); }
+
+    .serve__grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: start;
+    }
+
+    .serve__lead {
+      position: sticky;
+      top: 3rem;
+    }
+
+    .serve__lead p {
+      max-width: 34rem;
+      margin-top: 1.8rem;
+      color: var(--slate);
+      font-size: 1.16rem;
+    }
+
+    .population-list {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .population-list li {
+      display: grid;
+      padding-block: 1.6rem;
+      border-bottom: 1px solid var(--line);
+      grid-template-columns: 3rem 1fr;
+      gap: 1rem;
+    }
+
+    .population-list .num {
+      color: var(--brick);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .population-list h3 { margin-bottom: 0.55rem; font-size: 1.55rem; }
+    .population-list p { margin: 0; color: var(--slate); }
+
+    .serve__context {
+      display: grid;
+      margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
+      padding: clamp(1.5rem, 2.2vw, 2.25rem);
+      border-top: 3px solid var(--teal);
+      grid-column: 1 / -1;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(2rem, 8vw, 7rem);
+      background: rgba(115,184,191,0.2);
+    }
+
+    .serve__context h3 {
+      max-width: 13ch;
+      font-size: clamp(1.75rem, 2.6vw, 2.75rem);
+      line-height: 1.05;
+    }
+
+    .serve__context p {
+      max-width: 44rem;
+      margin: 0;
+      align-self: end;
+      color: var(--slate);
+      font-size: clamp(1.02rem, 1.3vw, 1.15rem);
+    }
+
+    /* Fragmentation */
+    .fragment {
+      color: rgba(255,255,255,0.82);
+      background: var(--navy-deep);
+    }
+
+    .fragment h2, .fragment h3 { color: var(--white); }
+    .fragment h2 {
+      font-size: clamp(2.15rem, 3vw, 3.35rem);
+      line-height: 1.08;
+    }
+    .fragment .eyebrow { color: var(--teal); }
+
+    .fragment__grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: start;
+    }
+
+.fragment__copy {
+  padding-top: 0;
+  align-self: start;
+}
+
+    .fragment__copy p {
+      max-width: 34rem;
+      margin-top: 1.7rem;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.14rem;
+      font-weight: 500;
+    }
+
+    .fragment__copy .fragment__problem {
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    .fragment__problem strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .fragment__copy .fragment__gap-copy {
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--teal);
+      color: rgba(255,255,255,0.62);
+      font-weight: 400;
+    }
+
+    .fragment__gap-copy strong {
+      display: block;
+      margin-top: 0.35rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .fragment__copy .fragment__response {
+      margin-top: 2rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.72);
+      font-weight: 400;
+    }
+
+    .fragment__response strong {
+      display: block;
+      margin-bottom: 0.65rem;
+      color: var(--white);
+      font-size: 1.18rem;
+      font-weight: 600;
+    }
+
+    .fragment__copy .supporting-detail {
+      color: rgba(255,255,255,0.58);
+      font-weight: 400;
+    }
+
+    .fragment__diagram {
+      position: relative;
+      padding: clamp(1.4rem, 3vw, 2.4rem);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .fragment__label {
+      margin-bottom: 1.2rem;
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .dimensions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .dimension {
+      display: flex;
+      min-height: 260px;
+      padding: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.13);
+      flex-direction: column;
+      color: rgba(255,255,255,0.66);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .dimension__number {
+      margin-bottom: 0.8rem;
+      color: var(--teal);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .dimension h3 {
+      color: var(--white);
+      font-size: 1.08rem;
+      line-height: 1.15;
+    }
+
+    .dimension ul {
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.79rem;
+      line-height: 1.42;
+    }
+
+    .dimension li + li { margin-top: 0.4rem; }
+
+    .dimension__note {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .dimension-connector {
+      position: relative;
+      display: flex;
+      height: 78px;
+      align-items: flex-end;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .dimension-connector::before {
+      position: absolute;
+      top: 0;
+      right: 16.667%;
+      left: 16.667%;
+      height: 27px;
+      border-right: 1px solid rgba(255,255,255,0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      border-left: 1px solid rgba(255,255,255,0.25);
+      content: "";
+    }
+
+    .dimension-connector::after {
+      position: absolute;
+      top: 27px;
+      left: 50%;
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.25);
+      content: "";
+    }
+
+    .continuity-card {
+      padding: 1.5rem;
+      color: var(--navy);
+      background: var(--teal);
+    }
+
+    .continuity-card__kicker {
+      display: block;
+      margin-bottom: 0.65rem;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .continuity-card h3 {
+      margin-bottom: 0.45rem;
+      color: var(--navy);
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      line-height: 1.08;
+    }
+    .continuity-card p { margin: 0; font-size: 0.96rem; }
+
+    .outcome-connector {
+      position: relative;
+      height: 72px;
+    }
+
+    .outcome-connector::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.42);
+      content: "";
+    }
+
+    .outcome-connector::after {
+      position: absolute;
+      bottom: 17px;
+      left: calc(50% - 6px);
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid rgba(255,255,255,0.62);
+      border-bottom: 2px solid rgba(255,255,255,0.62);
+      content: "";
+      transform: rotate(45deg);
+    }
+
+    .outcomes-card {
+      padding: 1.5rem;
+      border-top: 3px solid var(--coral);
+      color: var(--navy);
+      background: var(--ivory-light);
+    }
+
+    .outcomes-card__kicker {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--brick);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .outcomes-card h3 {
+      max-width: none;
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 1.65vw, 1.7rem);
+      line-height: 1.08;
+    }
+
+    .outcomes-card h3 span { display: block; }
+
+    .outcomes-card p {
+      max-width: 58rem;
+      margin: 1rem 0 0;
+      color: var(--slate);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .outcomes-card p strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* Model */
+    .model { background: var(--white); }
+
+    .model__list {
+      border-top: 1px solid var(--line);
+    }
+
+    .model__row {
+      display: grid;
+      padding-block: clamp(1.8rem, 4vw, 3.1rem);
+      border-bottom: 1px solid var(--line);
+      grid-template-columns: 5rem 0.8fr 1.15fr;
+      gap: clamp(1rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .model__number {
+      padding-top: 0.35rem;
+      color: var(--brick);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+    }
+
+    .model__row h3 { padding-top: 0.4rem; }
+    .model__row p { max-width: 37rem; margin: 0; color: var(--slate); }
+
+    /* Practice */
+    .practice { background: var(--ivory); }
+
+    .practice__grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: start;
+    }
+
+    .practice__statement {
+      padding: clamp(2rem, 5vw, 4rem);
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .practice__statement h2 {
+      color: var(--white);
+      font-size: clamp(2.15rem, 3vw, 3.35rem);
+      line-height: 1.08;
+    }
+
+    .practice__statement p {
+      margin-top: 1.7rem;
+      color: rgba(255,255,255,0.72);
+      font-size: 1.12rem;
+    }
+
+    .practice__quote {
+      margin-top: 3.2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid rgba(255,255,255,0.22);
+      color: var(--teal);
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .practice__points {
+      display: grid;
+      gap: 0;
+      padding-top: 0;
+      align-self: start;
+    }
+
+    .practice__point {
+      padding-block: 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .practice__point:first-child { padding-top: 0; }
+    .practice__point h3 { margin-bottom: 0.55rem; font-size: 1.55rem; }
+    .practice__point p { margin: 0; color: var(--slate); }
+
+    /* Care story */
+    .story { background: var(--ivory-light); }
+
+    .story__grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: start;
+    }
+
+    .story__intro { position: sticky; top: 3rem; align-self: start; }
+    .story__intro p { margin-top: 1.5rem; color: var(--slate); }
+
+    .story__steps {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+
+    .story__steps::before {
+      position: absolute;
+      top: 1rem;
+      bottom: 1rem;
+      left: 19px;
+      width: 1px;
+      background: var(--line);
+      content: "";
+    }
+
+    .story__step {
+      position: relative;
+      display: grid;
+      padding: 0 0 2.2rem;
+      grid-template-columns: 40px 1fr;
+      gap: 1.25rem;
+    }
+
+    .story__dot {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      place-items: center;
+      color: var(--brick);
+      background: var(--ivory-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .story__step h3 { margin-bottom: 0.45rem; font-size: 1.5rem; }
+    .story__step p { margin: 0; color: var(--slate); }
+    .story__step .story__emphasis {
+      margin-top: 0.8rem;
+      color: var(--navy);
+      font-size: 1.02rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .story__step--context .story__body {
+      padding: 1.5rem;
+      border-left: 3px solid var(--coral);
+      background: var(--white);
+      box-shadow: 0 12px 40px rgba(2,60,92,0.08);
+    }
+
+    .story__step--context .story__dot {
+      border-color: var(--coral);
+      color: var(--white);
+      background: var(--coral);
+    }
+
+    /* Technology */
+    .technology {
+      color: rgba(255,255,255,0.76);
+      background: var(--navy);
+    }
+
+    .technology h2, .technology h3 { color: var(--white); }
+    .technology .eyebrow { color: var(--teal); }
+    .technology .section-intro p {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .platform-flow {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .platform-column {
+      padding: clamp(1.3rem, 3vw, 2rem);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .platform-column--core {
+      color: var(--navy);
+      background: var(--teal);
+    }
+
+    .platform-column--core h3 { color: var(--navy); }
+
+    .platform-kicker {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .platform-column h3 { margin-bottom: 1.2rem; }
+
+    .platform-list { margin: 0; padding: 0; list-style: none; }
+
+    .platform-list li {
+      padding-block: 0.65rem;
+      border-top: 1px solid rgba(255,255,255,0.13);
+      font-size: 0.92rem;
+    }
+
+    .platform-column--core .platform-list li { border-color: rgba(2,60,92,0.2); }
+
+    .ai-note {
+      display: grid;
+      margin-top: 2.4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      grid-template-columns: 0.5fr 1.5fr;
+      gap: 2rem;
+    }
+
+    .ai-note h3 { color: var(--teal); }
+    .ai-note p { max-width: 48rem; margin: 0; }
+
+    /* People */
+    .people { background: var(--white); }
+
+    .people__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: start;
+    }
+
+    .people__copy p {
+      max-width: 35rem;
+      margin-top: 1.7rem;
+      color: var(--slate);
+      font-size: 1.12rem;
+    }
+
+    .experience {
+      display: grid;
+      border-top: 1px solid var(--line);
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .experience span {
+      padding: 1.2rem 0.5rem 1.2rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--navy);
+      font-family: var(--serif);
+      font-size: 1.18rem;
+    }
+
+    .experience span:nth-child(even) { padding-left: 1.2rem; border-left: 1px solid var(--line); }
+
+    .culture-note {
+      margin-top: clamp(3.5rem, 7vw, 6rem);
+      padding: clamp(2rem, 5vw, 4rem);
+      color: var(--navy);
+      background: var(--ivory);
+    }
+
+    .culture-note__grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .culture-note p { margin: 0; color: var(--slate); font-size: 1.08rem; }
+
+    /* Shared accountability */
+    .system { background: var(--ivory-light); }
+
+    .system__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .system__item { padding: 2rem; }
+    .system__item + .system__item { border-left: 1px solid var(--line); }
+    .system__item h3 { margin-bottom: 1rem; }
+    .system__item p { margin: 0; color: var(--slate); }
+
+    .accountability {
+      display: grid;
+      margin-top: 4rem;
+      padding: clamp(2rem, 5vw, 4rem);
+      color: rgba(255,255,255,0.74);
+      background: var(--navy-deep);
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .accountability h3 { color: var(--white); font-size: clamp(2rem, 3.6vw, 3.2rem); }
+
+    .measure-list {
+      display: grid;
+      margin: 0;
+      padding: 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 1.5rem;
+      list-style: none;
+    }
+
+    .measure-list li {
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.92rem;
+    }
+
+    /* Close */
+    .closing {
+      padding-block: clamp(5.5rem, 12vw, 10rem);
+      text-align: center;
+      background: var(--teal);
+    }
+
+    .closing p {
+      max-width: 24ch;
+      margin: 0 auto;
+      color: var(--navy);
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.4vw, 4.5rem);
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding-block: 4rem 2rem;
+      color: rgba(255,255,255,0.72);
+      background: var(--navy-deep);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr 0.8fr;
+      gap: 3rem;
+    }
+
+    .footer__brand img { width: 190px; }
+    .footer__brand p { max-width: 25rem; margin-top: 1.3rem; font-size: 0.93rem; }
+
+    .footer__heading {
+      margin-bottom: 1rem;
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer__links { margin: 0; padding: 0; list-style: none; }
+    .footer__links li { margin-bottom: 0.45rem; }
+
+    .footer__links a {
+      color: rgba(255,255,255,0.76);
+      font-size: 0.91rem;
+      text-decoration: none;
+    }
+
+    .footer__links a:hover,
+    .footer__links a:focus-visible { color: var(--white); text-decoration: underline; }
+
+    .footer__address { margin: 0; font-style: normal; font-size: 0.91rem; }
+
+    .footer__bottom {
+      display: flex;
+      margin-top: 3.5rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255,255,255,0.52);
+      font-size: 0.8rem;
+    }
+
+    /* Subtle reveal, with content visible when JS is unavailable */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    @media (max-width: 900px) {
+      .nav { min-height: 82px; }
+      .brand img { width: 180px; }
+      .site-header.is-scrolled .nav { min-height: 66px; }
+      .site-header.is-scrolled .brand img { width: 158px; }
+      .menu-toggle { display: block; position: relative; z-index: 30; }
+
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        z-index: 25;
+        display: none;
+        padding: 7rem var(--gutter) 3rem;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+        background: var(--navy-deep);
+      }
+
+      .nav-links.is-open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding-block: 1rem; border-bottom: 1px solid rgba(255,255,255,0.14); font-family: var(--serif); font-size: 1.8rem; }
+
+      .hero { min-height: 900px; }
+      .hero::before { background: linear-gradient(0deg, rgba(1,47,73,0.99) 0%, rgba(1,47,73,0.9) 48%, rgba(1,47,73,0.25) 100%); }
+      .hero__image { inset: 0 0 auto; width: 100%; height: 52%; object-position: center 35%; }
+      .hero__inner { min-height: 900px; padding-top: 120px; padding-bottom: 56px; align-items: flex-end; }
+      .hero__copy { width: 100%; }
+      .hero h1 { max-width: 11ch; }
+
+      .thesis__grid,
+      .serve__grid,
+      .fragment__grid,
+      .practice__grid,
+      .story__grid,
+      .people__grid,
+      .culture-note__grid,
+      .accountability { grid-template-columns: 1fr; }
+
+      .thesis__grid { gap: 1.4rem; }
+      .fragment__copy, .practice__points { padding-top: 0; }
+      .thesis__item { padding: 1rem 0 0; border-top: 1px solid rgba(2,60,92,0.28); border-left: 0; }
+      .serve__lead, .story__intro { position: static; }
+      .serve__context { grid-template-columns: 1fr; gap: 1.25rem; }
+      .platform-flow { grid-template-columns: 1fr; }
+      .ai-note { grid-template-columns: 1fr; }
+      .system__grid { grid-template-columns: 1fr; }
+      .system__item { padding-inline: 0; }
+      .system__item + .system__item { border-top: 1px solid var(--line); border-left: 0; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .footer__brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 1rem; }
+      h1 { font-size: clamp(2.75rem, 11.5vw, 3.75rem); }
+      .hero { min-height: 840px; }
+      .hero__inner { min-height: 840px; }
+      .hero__principles { display: grid; gap: 0.35rem; }
+      .model__row { grid-template-columns: 2.5rem 1fr; }
+      .model__row h3 { padding-top: 0; }
+      .model__row p { grid-column: 2; }
+      .dimensions { grid-template-columns: 1fr; }
+      .dimension { min-height: 0; }
+      .dimension-connector { height: 58px; }
+      .dimension-connector::before {
+        top: 0;
+        right: auto;
+        left: 50%;
+        width: 1px;
+        height: 25px;
+        border: 0;
+        background: rgba(255,255,255,0.25);
+      }
+      .dimension-connector::after { display: none; }
+      .experience { grid-template-columns: 1fr; }
+      .experience span:nth-child(even) { padding-left: 0; border-left: 0; }
+      .measure-list { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__brand { grid-column: auto; }
+      .footer__bottom { flex-direction: column; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="HarborWell Health home">
+        <img src="https://static.wixstatic.com/media/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png/v1/fill/w_302,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png" alt="HarborWell Health">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span></button>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links" id="primary-navigation">
+          <li><a href="#who-we-serve">Who we serve</a></li>
+          <li><a href="#clinical-model">Clinical model</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#care-story">Care Story</a></li>
+          <li><a href="people.html">People</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="hero__image" src="https://static.wixstatic.com/media/47c97a_99fb8b028b574e80a5fd7dc023efbceb~mv2.jpg/v1/fill/w_1200,h_1200,al_c,q_90,enc_avif,quality_auto/47c97a_99fb8b028b574e80a5fd7dc023efbceb~mv2.jpg" alt="A man using a wheelchair sharing a moment with a caregiver outdoors">
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow">HarborWell Health</span>
+          <h1 id="hero-title">Bringing clinical care together around the people who need it most.</h1>
+          <p class="hero__lead">HarborWell provides physician-led, longitudinal clinical care for people with complex medical, functional, and social needs. Available around the clock, our teams hold the whole picture, coordinate what happens next, and remain accountable over time.</p>
+          <div class="hero__principles" aria-label="HarborWell care principles">
+            <span>Physician-led</span>
+            <span>Interdisciplinary</span>
+            <span>Available 24/7</span>
+            <span>Built around life at home</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="thesis" aria-label="HarborWell's purpose">
+      <div class="container thesis__grid reveal">
+        <div class="thesis__statement">A clinical relationship that endures beyond any single encounter.</div>
+        <div class="thesis__item"><strong>Know the person</strong><span>Not only the condition or episode.</span></div>
+        <div class="thesis__item"><strong>Respond in time</strong><span>When circumstances begin to change.</span></div>
+        <div class="thesis__item"><strong>Remain accountable</strong><span>Across settings and over time.</span></div>
+      </div>
+    </section>
+
+    <section class="section serve" id="who-we-serve" aria-labelledby="serve-title">
+      <div class="container">
+        <div class="serve__grid">
+          <div class="serve__lead reveal">
+            <span class="eyebrow">Who we serve</span>
+            <h2 id="serve-title">Complex needs do not fit neatly within the boundaries of the healthcare system.</h2>
+            <p>HarborWell serves people whose health and independence depend on medical care, long-term services and supports, family caregivers, and the realities of everyday life working together.</p>
+          </div>
+          <ol class="population-list reveal">
+            <li>
+              <span class="num">01</span>
+              <div><h3>People living with physical disabilities</h3><p>People whose health and independence depend on medical care, personal assistance, equipment, and home- and community-based services working together.</p></div>
+            </li>
+            <li>
+              <span class="num">02</span>
+              <div><h3>Frail and elderly adults</h3><p>People who want to remain safely at home while managing frailty, chronic conditions, and changing functional needs.</p></div>
+            </li>
+            <li>
+              <span class="num">03</span>
+              <div><h3>People with traumatic brain injury or intellectual and developmental disabilities</h3><p>People whose needs may span clinical, behavioral, functional, and community-based support over a lifetime.</p></div>
+            </li>
+            <li>
+              <span class="num">04</span>
+              <div><h3>HCBS provider organizations and frontline caregivers</h3><p>HarborWell partners with HCBS organizations and the aides, families, and caregivers closest to the patient. When they notice a change, there is a direct path to clinical assessment, intervention, and follow-through.</p></div>
+            </li>
+          </ol>
+        </div>
+        <aside class="serve__context reveal" aria-label="Program context">
+          <h3>Built for Medicaid and DSNP members.</h3>
+          <p>HarborWell serves members receiving managed long-term services and supports (MLTSS) and home- and community-based services (HCBS) whose needs cross Medicaid, Medicare, health plans, providers, and the home.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section fragment" aria-labelledby="fragment-title">
+      <div class="container fragment__grid">
+        <div class="fragment__copy reveal">
+          <span class="eyebrow">The gap in care</span>
+          <h2 id="fragment-title">Complex needs require continuous, integrated care—not episodic, fragmented support.</h2>
+          <p class="fragment__problem">Our patients have <strong>clinical</strong>, <strong>functional</strong>, and <strong>social</strong> needs. The organizations that serve those needs operate in a fragmented market. They vary widely in size, capabilities, technology, and ability to share information. Each holds only part of the picture. But our patients' health and independence depend on all three working together.</p>
+          <p class="fragment__response"><strong>HarborWell integrates this fragmented system around the patient.</strong> We bring clinical information, social context, and partner-delivered functional support into one longitudinal view—then coordinate action across organizations and remain accountable over time.</p>
+        </div>
+        <div class="fragment__diagram reveal" role="img" aria-label="Clinical care, functional support, and social context connected by HarborWell's longitudinal clinical team, leading to healthier lives, less time in hospitals, and more safe days at home">
+          <div class="fragment__label">Three dimensions of health and independence</div>
+          <div class="dimensions">
+            <article class="dimension">
+              <span class="dimension__number">01</span>
+              <h3>Clinical care</h3>
+              <ul>
+                <li>Medical conditions</li>
+                <li>Medications</li>
+                <li>Behavioral health</li>
+                <li>Clinical decisions</li>
+                <li>Care transitions</li>
+              </ul>
+            </article>
+            <article class="dimension">
+              <span class="dimension__number">02</span>
+              <h3>Functional support</h3>
+              <ul>
+                <li>Frontline aides</li>
+                <li>Home modifications</li>
+                <li>Assistive technology</li>
+                <li>Occupational and physical therapy</li>
+              </ul>
+              <span class="dimension__note">Delivered through MLTSS and HCBS partners</span>
+            </article>
+            <article class="dimension">
+              <span class="dimension__number">03</span>
+              <h3>Social context and support</h3>
+              <ul>
+                <li>Housing</li>
+                <li>Food</li>
+                <li>Transportation</li>
+                <li>Caregiver capacity</li>
+                <li>Conditions shaping health</li>
+              </ul>
+            </article>
+          </div>
+          <div class="dimension-connector">Integrates</div>
+          <div class="continuity-card">
+            <span class="continuity-card__kicker">HarborWell's longitudinal clinical team</span>
+            <h3>One continuous clinical relationship.</h3>
+            <p>One view of the patient. Coordinated clinical action. Accountability over time.</p>
+          </div>
+          <div class="outcome-connector" aria-hidden="true"></div>
+          <div class="outcomes-card">
+            <span class="outcomes-card__kicker">What becomes possible</span>
+            <h3><span>Healthier lives.</span><span>Less time in hospitals.</span><span>More safe days at home.</span></h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section model" id="clinical-model" aria-labelledby="model-title">
+      <div class="container">
+        <div class="section-intro reveal">
+          <span class="eyebrow">The clinical model</span>
+          <h2 id="model-title">One clinical team working across the member's life.</h2>
+          <p>The model is built for continuity: understanding the person over time, responding when needs change, and coordinating the clinical and community resources around them.</p>
+        </div>
+        <div class="model__list">
+          <article class="model__row reveal">
+            <span class="model__number">01</span>
+            <h3>Physician-led. Interdisciplinary by design.</h3>
+            <p>Physicians provide clinical leadership and accountability within an interdisciplinary team of nurse practitioners, registered nurses, pharmacists, registered dietitians, and licensed clinical social workers. Each discipline contributes to one longitudinal view of the patient and shares responsibility for coordinated action over time.</p>
+          </article>
+          <article class="model__row reveal">
+            <span class="model__number">02</span>
+            <h3>One team. A trusted relationship over time.</h3>
+            <p>Patients and caregivers build a trusted relationship with one clinical team that knows them—their history, goals, home, care plan, and the people who support them. That understanding deepens over time, allowing the team to integrate care, recognize change, and coordinate what happens next without starting over at every encounter.</p>
+          </article>
+          <article class="model__row reveal">
+            <span class="model__number">03</span>
+            <h3>Available 24/7</h3>
+            <p>Patients and caregivers can reach HarborWell's clinical team at any time, and the team stays in communication as needs change. Working across medical providers, HCBS partners, caregivers, and the home, HarborWell brings clinical information, functional support, and social context into one longitudinal view. The team coordinates action and remains accountable for what happens next.</p>
+          </article>
+          <article class="model__row reveal">
+            <span class="model__number">04</span>
+            <h3>Integrated with HCBS partners</h3>
+            <p>HarborWell works alongside HCBS provider organizations, frontline aides, and family caregivers who support the patient at home. Their day-to-day observations and understanding of the patient's functional needs become part of the clinical picture, creating a direct path from a change noticed at home to clinical assessment, coordinated action, and follow-through.</p>
+          </article>
+        </div>
+        <aside class="serve__context reveal" aria-label="Value-based accountability">
+          <h3>Accountable for outcomes</h3>
+          <p>Under full-risk value-based arrangements, HarborWell aligns the work of care with member outcomes, quality, independence, and total cost over time.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section practice" id="work" aria-labelledby="practice-title">
+      <div class="container practice__grid">
+        <div class="practice__statement reveal">
+          <span class="eyebrow">The practice of care</span>
+          <h2 id="practice-title">Clinical judgment deserves a system built to support it.</h2>
+          <p>Complex care is demanding. Clinicians should have a responsive organization around them—one that brings the right information forward, coordinates the work around decisions, and improves when the people doing the work see a better way.</p>
+          <div class="practice__quote">Spend attention on the member—not on hunting across systems for the story.</div>
+        </div>
+        <div class="practice__points reveal">
+          <article class="practice__point">
+            <h3>Unified patient view</h3>
+            <p>Claims, clinical records, transitions, care plans, and member signals are organized around a longitudinal view before the clinician has to ask.</p>
+          </article>
+          <article class="practice__point">
+            <h3>An interdisciplinary team</h3>
+            <p>Physicians, nurse practitioners, registered nurses, pharmacists, registered dietitians, and licensed clinical social workers share context and responsibility rather than leaving one clinician to carry the complexity alone.</p>
+          </article>
+          <article class="practice__point">
+            <h3>Ideas that can change the work</h3>
+            <p>HarborWell is evidence-based, data-informed, and experience-led. New ideas come from the clinicians and operators doing the work, from patients and caregivers, from clinical and operational data, and from external research. The people closest to the work help interpret those signals and translate them into better protocols, workflows, tools, and care.</p>
+          </article>
+          <article class="practice__point">
+            <h3>A learning organization, by design.</h3>
+            <p>HarborWell learns from the people doing the work, the patients we serve, and the outcomes we observe. What we learn becomes better protocols, workflows, tools, and care—creating a continuous cycle of learning and improvement.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section technology" id="technology" aria-labelledby="technology-title">
+      <div class="container">
+        <div class="section-intro reveal">
+          <span class="eyebrow">Technology in service of care</span>
+          <h2 id="technology-title">A unified view of the member, built around the work of the clinical team.</h2>
+          <p>HarborWell's proprietary platform connects the information and signals that shape a member's health across medical care, long-term services and supports, and the home.</p>
+        </div>
+        <div class="platform-flow reveal">
+          <div class="platform-column">
+            <span class="platform-kicker">Signals and sources</span>
+            <h3>What is happening</h3>
+            <ul class="platform-list">
+              <li>Claims and eligibility</li>
+              <li>Clinical records and the EMR</li>
+              <li>HIE and ADT feeds</li>
+              <li>Care-management information</li>
+              <li>HCBS partner information</li>
+              <li>Member and caregiver interactions</li>
+            </ul>
+          </div>
+          <div class="platform-column platform-column--core">
+            <span class="platform-kicker">HarborWell platform</span>
+            <h3>Context made useful</h3>
+            <ul class="platform-list">
+              <li>Unified longitudinal member view</li>
+              <li>Clinical attention and prioritization</li>
+              <li>Connected workflows and ownership</li>
+              <li>Omnichannel communication</li>
+              <li>Evidence and accountable follow-through</li>
+              <li>Measurement across care and contracts</li>
+            </ul>
+          </div>
+          <div class="platform-column">
+            <span class="platform-kicker">Clinical team</span>
+            <h3>What happens next</h3>
+            <ul class="platform-list">
+              <li>Understand the whole situation</li>
+              <li>Identify meaningful change</li>
+              <li>Apply clinical judgment</li>
+              <li>Coordinate the response</li>
+              <li>Close the loop</li>
+              <li>Learn from the result</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ai-note reveal">
+          <h3>Thoughtful use of AI</h3>
+          <p>AI helps synthesize information, identify gaps and emerging risks, prioritize attention, and reduce repetitive administrative work. It operates within defined context, tools, and controls—augmenting the judgment of the clinical team rather than replacing it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story" id="care-story" aria-labelledby="story-title">
+      <div class="container story__grid">
+        <div class="story__intro reveal">
+          <span class="eyebrow">A representative care story</span>
+          <h2 id="story-title">Before the emergency, there is often a small change. We stay close enough to notice—and act.</h2>
+          <p>Members, caregivers, and frontline aides often see the first signs that something is changing. Their direct connection to HarborWell allows the clinical team to understand those changes in context and respond early.</p>
+        </div>
+        <div class="story__steps">
+          <article class="story__step reveal">
+            <span class="story__dot">01</span>
+            <div class="story__body"><h3>Someone close to the member notices a change</h3><p>A caregiver or frontline aide sees a subtle shift in function, behavior, appetite, breathing, or routine.</p></div>
+          </article>
+          <article class="story__step reveal">
+            <span class="story__dot">02</span>
+            <div class="story__body"><h3>They bring HarborWell in</h3><p>They reach out. The platform brings the concern to the clinical team and sets the response in motion.</p></div>
+          </article>
+          <article class="story__step story__step--context reveal">
+            <span class="story__dot">03</span>
+            <div class="story__body"><h3>The clinical story is already assembled</h3><p>Deep EMR integration and connected data bring together relevant history, medications, claims, recent transitions, care-plan context, and prior member signals.</p><p class="story__emphasis">The clinician receives a cohesive view without having to hunt across systems.</p></div>
+          </article>
+          <article class="story__step reveal">
+            <span class="story__dot">04</span>
+            <div class="story__body"><h3>A clinician evaluates and decides</h3><p>The platform prioritizes attention and provides context. The clinician applies judgment and determines the appropriate response.</p></div>
+          </article>
+          <article class="story__step reveal">
+            <span class="story__dot">05</span>
+            <div class="story__body"><h3>The work around the decision is coordinated</h3><p>Follow-up is assigned, the right participants are informed, and the concern remains visible until it is resolved.</p></div>
+          </article>
+          <article class="story__step reveal">
+            <span class="story__dot">06</span>
+            <div class="story__body"><h3>The change is addressed early. The patient stays healthier—and at home.</h3><p>The team follows through, stays in touch, and carries what it learns into the member's ongoing care. Each interaction deepens the understanding already in place.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-label="HarborWell closing statement">
+      <div class="container reveal">
+        <p>When care works, patients thrive at home.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="https://static.wixstatic.com/media/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png/v1/fill/w_302,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/47c97a_ce5856b21baf440bb5c9df2c99164563~mv2.png" alt="HarborWell Health">
+          <p>Physician-led, longitudinal clinical care for people with complex needs living at home.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Explore</div>
+          <ul class="footer__links">
+            <li><a href="#who-we-serve">Who we serve</a></li>
+            <li><a href="#clinical-model">Clinical model</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#care-story">Care Story</a></li>
+            <li><a href="people.html">People</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Contact</div>
+          <address class="footer__address">
+            3810 Bedford Avenue, Suite 200<br>
+            Nashville, Tennessee 37215<br><br>
+            <a href="mailto:support@harborwellhealth.org">support@harborwellhealth.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 HarborWell Health</span>
+        <span>
+          <a href="privacy-policy.html">Privacy Policy</a> ·
+          <a href="terms-of-service.html">Terms of Service</a> ·
+          <a href="notice-of-privacy-practices.html">Notice of Privacy Practices</a> ·
+          <a href="sms-program.html">SMS / Texting Program</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+
+    function updateHeader() {
+      header.classList.toggle('is-scrolled', window.scrollY > 56);
+    }
+
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    function closeMenu() {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      menu.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
+    }
+
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open navigation' : 'Close navigation');
+      menu.classList.toggle('is-open', !open);
+      document.body.classList.toggle('menu-open', !open);
+    });
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>
